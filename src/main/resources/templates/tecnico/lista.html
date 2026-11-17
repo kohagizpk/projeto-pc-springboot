@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Técnicos</title>
+</head>
+
+<body>
+
+    <h1>Lista de Técnicos</h1>
+
+    <a th:href="@{/tecnico/novo}">
+        Cadastrar Novo Técnico
+    </a>
+
+    <br><br>
+
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Cargo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each="tecnico : ${tecnicos}">
+
+                <td th:text="${tecnico.id}"></td>
+
+                <td th:text="${tecnico.nome}"></td>
+
+                <td th:text="${tecnico.idade}"></td>
+
+                <td th:text="${tecnico.cpf}"></td>
+
+                <td th:text="${tecnico.telefone}"></td>
+
+                <td th:text="${tecnico.cargo}"></td>
+
+                <td>
+
+                    <a th:href="@{/tecnico/editar/{id}(id=${tecnico.id})}">
+                        Editar
+                    </a>
+
+                    |
+
+                    <a th:href="@{/tecnico/excluir/{id}(id=${tecnico.id})}"
+                       onclick="return confirm('Deseja realmente excluir este técnico?')">
+                        Excluir
+                    </a>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a th:href="@{/}">
+        Voltar ao Menu Principal
+    </a>
+
+</body>
+</html>

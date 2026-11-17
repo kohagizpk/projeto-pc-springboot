@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Técnico</title>
+</head>
+
+<body>
+
+    <h1>Cadastro de Técnico</h1>
+
+    <form th:action="@{/tecnico/salvar}"
+          th:object="${tecnico}"
+          method="post">
+
+        <!-- ID fica escondido -->
+        <input type="hidden" th:field="*{id}">
+
+        <div>
+            <label for="nome">Nome:</label>
+
+            <input type="text"
+                   id="nome"
+                   th:field="*{nome}"
+                   required>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="idade">Idade:</label>
+
+            <input type="text"
+                   id="idade"
+                   th:field="*{idade}"
+                   required>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="cpf">CPF:</label>
+
+            <input type="text"
+                   id="cpf"
+                   th:field="*{cpf}"
+                   placeholder="000.000.000-00"
+                   required>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="telefone">Telefone:</label>
+
+            <input type="text"
+                   id="telefone"
+                   th:field="*{telefone}"
+                   placeholder="(11) 99999-9999"
+                   required>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="cargo">Cargo:</label>
+
+            <input type="text"
+                   id="cargo"
+                   th:field="*{cargo}"
+                   required>
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Salvar
+        </button>
+
+        <a th:href="@{/tecnico}">
+            Cancelar
+        </a>
+
+    </form>
+
+</body>
+</html>

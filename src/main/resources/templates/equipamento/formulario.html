@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Equipamento</title>
+</head>
+
+<body>
+    <h1>Cadastro de Equipamento</h1>
+
+    <form th:action="@{/equipamentos/salvar}"
+          th:object="${equipamento}"
+          method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required>
+
+        <br><br>
+
+        <label>Tipo:</label>
+        <input type="text" th:field="*{tipo}" required>
+
+        <br><br>
+
+        <label>Marca:</label>
+        <input type="text" th:field="*{marca}">
+
+        <br><br>
+
+        <label>Modelo:</label>
+        <input type="text" th:field="*{modelo}">
+
+        <br><br>
+
+        <label>Patrimônio:</label>
+        <input type="text" th:field="*{patrimonio}">
+
+        <br><br>
+
+        <button type="submit">Salvar</button>
+
+    </form>
+    <br>
+    <a th:href="@{/equipamentos}">Voltar para a lista</a>
+</body>
+</html>

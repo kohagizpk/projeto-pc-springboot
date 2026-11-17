@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Equipamentos</title>
+</head>
+
+<body>
+    <h1>Equipamentos Cadastrados</h1>
+    <a th:href="@{/equipamentos/novo}">
+        Novo Equipamento
+    </a>
+    <br><br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Patrimônio</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="equipamento : ${equipamentos}">
+                <td th:text="${equipamento.id}"></td>
+                <td th:text="${equipamento.nome}"></td>
+                <td th:text="${equipamento.tipo}"></td>
+                <td th:text="${equipamento.marca}"></td>
+                <td th:text="${equipamento.modelo}"></td>
+                <td th:text="${equipamento.patrimonio}"></td>
+
+                <td>
+                    <a th:href="@{/equipamentos/editar/{id}(id=${equipamento.id})}">
+                        Alterar
+                    </a>
+                    |
+                    <form th:action="@{/equipamentos/excluir/{id}(id=${equipamento.id})}"
+                          method="post"
+                          style="display: inline;">
+                        <button type="submit"
+                                onclick="return confirm('Deseja realmente excluir este equipamento?')">
+                            Deletar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(equipamentos)}">
+                <td colspan="7">Nenhum equipamento cadastrado.</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <br>
+    <a th:href="@{/}">Voltar ao menu principal</a>
+
+</body>
+</html>
